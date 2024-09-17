@@ -1,12 +1,17 @@
 import { Header } from './components/Header';
 import { Articles } from './components/Articles';
+import { ArticlePage } from './components/ArticlePage';
+import { Routes, Route, useParams } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <>
       <Header />
-      <Articles />
+      <Routes>
+        <Route path='/' element={<Articles />} />
+        <Route path='/article/:article_id' element={<ArticlePage />} />
+      </Routes>
     </>
   );
 }

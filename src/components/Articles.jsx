@@ -4,11 +4,19 @@ import { useEffect, useState } from 'react';
 
 export const Articles = () => {
   const [articleList, setArticleList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getArticles().then((articles) => {
       setArticleList(articles);
+      setIsLoading(false);
     });
   }, []);
+
+  if (isLoading) {
+    return <p>Loading, please wait</p>;
+  }
+
   return (
     <ul className='article-container'>
       {articleList.map((article, i) => {
