@@ -23,7 +23,7 @@ export const ArticleCard = ({
       <Link to={`/article/${article_id}`}>
         <h2>{title}</h2>
       </Link>
-      <img src={article_img_url} />
+      <img className='article-img' src={article_img_url} />
       <div>
         Votes: {votes}, Comments: {comment_count}
       </div>
