@@ -43,9 +43,11 @@ a {
 }
 
 .widget {
-  display: inline-block;
+  display: flex;
   color: white;
   background-color: grey;
+  justify-content: space-between;
+  min-width: 70px;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px #3b3b3b;

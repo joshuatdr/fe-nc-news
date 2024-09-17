@@ -11,12 +11,12 @@
 #comments ul {
   list-style: none;
   padding: 0;
-  margin-left: 5px;
 }
 
 #comments li {
   border-radius: 10px;
   margin-bottom: 20px;
+  margin-left: 15px;
 }
 
 #comments img {
@@ -37,8 +37,4 @@
 
 #comments #avatar-body {
   display: flex;
-}
-
-#comments .widget {
-  width: 70px;
 }

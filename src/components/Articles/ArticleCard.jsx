@@ -1,6 +1,7 @@
 import ReactTimeAgo from 'react-time-ago';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { VoteWidget } from '../VoteWidget';
 
 export const ArticleCard = ({
   article: {
@@ -26,11 +27,7 @@ export const ArticleCard = ({
       </Link>
       <img className='article-img' src={article_img_url} />
       <div className='stats-bar'>
-        <span className='widget'>
-          <button>+</button>
-          {votes}
-          <button>-</button>
-        </span>
+        <VoteWidget votes={votes} article_id={article_id} />
         <HashLink to={`/article/${article_id}/#comments`} className='widget'>
           Comments: {comment_count}
         </HashLink>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Comments } from './Comments';
 import { getArticle } from '../../apiCalls';
+import { VoteWidget } from '../VoteWidget';
 
 export const ArticlePage = () => {
   const { article_id } = useParams();
@@ -37,11 +38,7 @@ export const ArticlePage = () => {
         <h2>{article.title}</h2>
         <img className='article-img' src={article.article_img_url} />
         <div className='stats-bar'>
-          <span className='widget'>
-            <button>+</button>
-            {article.votes}
-            <button>-</button>
-          </span>
+          <VoteWidget votes={article.votes} article_id={article.article_id} />
           <HashLink to='#comments' className='widget'>
             Comments: {article.comment_count}
           </HashLink>
