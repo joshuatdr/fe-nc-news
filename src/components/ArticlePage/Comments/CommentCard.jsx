@@ -23,10 +23,16 @@ export const CommentCard = ({ comment }) => {
         />
       </span>
       <span id='avatar-body'>
-        <img src={userAvatar} />
+        <div>
+          <img src={userAvatar} />
+          <span className='widget'>
+            <button>+</button>
+            {comment.votes}
+            <button>-</button>
+          </span>
+        </div>
         <p>{comment.body}</p>
       </span>
-      <span>Votes: {comment.votes}</span>
     </li>
   );
 };

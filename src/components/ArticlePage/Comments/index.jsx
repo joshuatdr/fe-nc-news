@@ -18,7 +18,7 @@ export const Comments = ({ article_id }) => {
   }
 
   return (
-    <section className='comments'>
+    <section id='comments'>
       <h2>Comments:</h2>
       <ul>
         {comments.length === 0 ? (
