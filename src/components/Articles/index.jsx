@@ -1,5 +1,5 @@
 import { ArticleCard } from './ArticleCard';
-import { getArticles } from '../apiCalls';
+import { getArticles } from '../../apiCalls';
 import { useEffect, useState } from 'react';
 
 export const Articles = () => {
@@ -18,7 +18,7 @@ export const Articles = () => {
   }
 
   return (
-    <ul className='article-container'>
+    <ul className='article-list'>
       {articleList.map((article, i) => {
         return <ArticleCard key={i} article={article} />;
       })}

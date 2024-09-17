@@ -1,7 +1,7 @@
 import { Header } from './components/Header';
 import { Articles } from './components/Articles';
 import { ArticlePage } from './components/ArticlePage';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
