@@ -1,8 +1,10 @@
 import ReactTimeAgo from 'react-time-ago';
+import { HashLink } from 'react-router-hash-link';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Comments } from './Comments';
 import { getArticle } from '../../apiCalls';
+import { VoteWidget } from '../VoteWidget';
 
 export const ArticlePage = () => {
   const { article_id } = useParams();
@@ -35,14 +37,15 @@ export const ArticlePage = () => {
         />
         <h2>{article.title}</h2>
         <img className='article-img' src={article.article_img_url} />
-        <div>
-          Votes: {article.votes}, Comments: {article.comment_count}
+        <div className='stats-bar'>
+          <VoteWidget votes={article.votes} article_id={article.article_id} />
+          <HashLink to='#comments' className='widget'>
+            Comments: {article.comment_count}
+          </HashLink>
         </div>
         <p>{formatText}</p>
       </article>
-      <section>
-        <Comments article_id={article_id} />
-      </section>
+      <Comments article_id={article_id} />
     </>
   );
 };

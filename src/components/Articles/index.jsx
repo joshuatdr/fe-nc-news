@@ -1,6 +1,7 @@
 import { ArticleCard } from './ArticleCard';
 import { getArticles } from '../../apiCalls';
 import { useEffect, useState } from 'react';
+import './Articles.css';
 
 export const Articles = () => {
   const [articleList, setArticleList] = useState([]);

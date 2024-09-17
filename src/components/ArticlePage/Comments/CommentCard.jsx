@@ -1,6 +1,7 @@
 import ReactTimeAgo from 'react-time-ago';
 import { useEffect, useState } from 'react';
 import { getUser } from '../../../apiCalls';
+import { VoteWidget } from '../../VoteWidget';
 
 export const CommentCard = ({ comment }) => {
   const [userAvatar, setUserAvatar] = useState(
@@ -23,10 +24,12 @@ export const CommentCard = ({ comment }) => {
         />
       </span>
       <span id='avatar-body'>
-        <img src={userAvatar} />
+        <div>
+          <img src={userAvatar} />
+          <VoteWidget votes={comment.votes} comment_id={comment.comment_id} />
+        </div>
         <p>{comment.body}</p>
       </span>
-      <span>Votes: {comment.votes}</span>
     </li>
   );
 };
