@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CommentCard } from './CommentCard';
 import { getComments } from '../../../apiCalls';
+import './Comments.css';
 
 export const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);

@@ -1,0 +1,44 @@
+#comments {
+  scroll-margin-top: 60px;
+  /*offsets the position when clicking the comments hash-link*/
+}
+
+#comments h2 {
+  text-align: left;
+  margin-left: 15px;
+}
+
+#comments ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 5px;
+}
+
+#comments li {
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#comments img {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+}
+
+#comments p {
+  background-color: #c9c9c9;
+  margin: 0px 15px 0px 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+#comments #avatar-body {
+  display: flex;
+}
+
+#comments .widget {
+  width: 70px;
+}
