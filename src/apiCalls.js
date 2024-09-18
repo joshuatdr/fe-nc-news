@@ -59,3 +59,12 @@ export const patchVotes = ({ article_id, comment_id, inc_votes }) => {
     return data;
   });
 };
+
+export const postComment = (body, username, article_id) => {
+  const requestBody = { username, body };
+  return apiClient
+    .post(`/articles/${article_id}/comments`, requestBody)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
