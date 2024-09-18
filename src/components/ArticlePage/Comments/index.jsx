@@ -36,7 +36,14 @@ export const Comments = ({ article_id }) => {
           <span>It's quiet in here ... No comments yet!</span>
         ) : (
           comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                comments={comments}
+                setComments={setComments}
+              />
+            );
           })
         )}
       </ul>

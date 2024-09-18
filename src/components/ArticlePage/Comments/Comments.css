@@ -60,11 +60,20 @@
   margin: 0px;
   padding: 10px;
   border-radius: 5px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
   text-align: left;
 }
 
 #comments .loading {
-  background-color: #71788d;
+  background-color: #c9c9c9;
+  padding-top: 21.5px;
+  text-align: center;
+}
+
+#comments .deleting {
+  background-color: #9c2d2d;
   padding-top: 21.5px;
   text-align: center;
 }
@@ -98,6 +107,16 @@
   border-radius: 10px;
   grid-column: 3;
   grid-row: 3;
+}
+
+#comments .delete-comment {
+  justify-self: right;
+  width: 70px;
+  height: 30px;
+  background-color: rgb(110, 25, 25);
+  border-radius: 10px;
+  grid-column: 3;
+  grid-row: 4;
 }
 
 #comments textarea {
