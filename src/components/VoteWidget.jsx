@@ -1,7 +1,12 @@
 import { patchVotes } from '../apiCalls';
 import { useState } from 'react';
 
-export const VoteWidget = ({ votes, article_id, comment_id }) => {
+export const VoteWidget = ({
+  votes,
+  article_id,
+  comment_id,
+  isPlaceholder,
+}) => {
   let [currVotes, setCurrVotes] = useState(votes);
   let [addButtonEnabled, setAddButtonEnabled] = useState(true);
   let [subButtonEnabled, setSubButtonEnabled] = useState(true);
@@ -25,7 +30,7 @@ export const VoteWidget = ({ votes, article_id, comment_id }) => {
   return (
     <span className='widget'>
       <button
-        disabled={!addButtonEnabled}
+        disabled={!addButtonEnabled || isPlaceholder}
         // className='add-vote'
         onClick={() => {
           handleClick(1);
@@ -35,7 +40,7 @@ export const VoteWidget = ({ votes, article_id, comment_id }) => {
       </button>
       {currVotes}
       <button
-        disabled={!subButtonEnabled}
+        disabled={!subButtonEnabled || isPlaceholder}
         // className='sub-vote'
         onClick={() => {
           handleClick(-1);
