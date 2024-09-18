@@ -1,14 +1,21 @@
 import ReactTimeAgo from 'react-time-ago';
 import { TailSpin } from 'react-loading-icons';
 import { useEffect, useState, useContext } from 'react';
-import { getUser } from '../../../apiCalls';
+import { deleteComment, getUser } from '../../../apiCalls';
 import { VoteWidget } from '../../VoteWidget';
 import { UserContext } from '../../../contexts/User';
 
-export const CommentCard = ({ comment, isPlaceholder }) => {
+export const CommentCard = ({
+  comment,
+  comments,
+  setComments,
+  isPlaceholder,
+}) => {
   const [userAvatar, setUserAvatar] = useState(
     'https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg'
   );
+  const [isDeletingComment, setIsDeletingComment] = useState(false);
+  const { user } = useContext(UserContext);
 
   if (!isPlaceholder) {
     useEffect(() => {
@@ -17,7 +24,6 @@ export const CommentCard = ({ comment, isPlaceholder }) => {
       });
     }, []);
   } else {
-    const { user } = useContext(UserContext);
     return (
       <li>
         <span className='author'>{user.username}</span>
@@ -27,9 +33,25 @@ export const CommentCard = ({ comment, isPlaceholder }) => {
         <p className='loading'>
           <TailSpin stroke='#ffffff' strokeWidth='2.5' />
         </p>
+        <button className='delete-comment' disabled={true}>
+          Delete
+        </button>
       </li>
     );
   }
+
+  const handleClick = (e) => {
+    setIsDeletingComment(true);
+    deleteComment(comment.comment_id).then(() => {
+      setTimeout(() => {
+        setIsDeletingComment(false);
+        const copyComments = comments.filter((copyComment) => {
+          return copyComment.comment_id !== comment.comment_id;
+        });
+        setComments(copyComments);
+      }, 1000);
+    });
+  };
 
   return (
     <li>
@@ -42,7 +64,22 @@ export const CommentCard = ({ comment, isPlaceholder }) => {
       </span>
       <img src={userAvatar} />
       <VoteWidget votes={comment.votes} comment_id={comment.comment_id} />
-      <p>{comment.body}</p>
+      {isDeletingComment ? (
+        <p className='deleting'>
+          <TailSpin stroke='#ffffff' strokeWidth='2.5' />
+        </p>
+      ) : (
+        <p>{comment.body}</p>
+      )}
+      {comment.author === user.username ? (
+        <button
+          className='delete-comment'
+          disabled={isDeletingComment}
+          onClick={handleClick}
+        >
+          Delete
+        </button>
+      ) : null}
     </li>
   );
 };
