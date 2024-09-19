@@ -17,6 +17,10 @@
   object-fit: contain;
 }
 
+.sort-form {
+  margin-top: 5px;
+}
+
 article {
   background-color: white;
   margin: 15px;
