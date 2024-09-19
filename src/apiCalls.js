@@ -15,7 +15,6 @@ export const getArticles = (topic, sortByQuery, orderQuery) => {
   if (orderQuery) {
     queryStr += `order=${orderQuery}`;
   }
-  console.log(queryStr);
   return apiClient
     .get(queryStr)
     .then(({ data: { articles } }) => {
