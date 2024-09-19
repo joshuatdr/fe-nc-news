@@ -4,15 +4,25 @@ const apiClient = axios.create({
   baseURL: 'https://nc-news-jokh.onrender.com/api',
 });
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
+  let queryStr = '/articles';
+  if (topic) {
+    queryStr += `?topic=${topic}`;
+  }
   return apiClient
-    .get('/articles')
+    .get(queryStr)
     .then(({ data: { articles } }) => {
       return articles;
     })
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const getTopics = () => {
+  return apiClient.get('/topics').then(({ data: { topics } }) => {
+    return topics;
+  });
 };
 
 export const getArticle = (article_id) => {

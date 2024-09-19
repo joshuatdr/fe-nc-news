@@ -1,13 +1,12 @@
 .article-list {
   list-style: none;
   padding: 0;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 5px 15px;
 }
 
 .article-card {
-  background-color: rgb(204, 204, 204);
-  margin-top: 15px;
+  background-color: white;
+  margin-bottom: 15px;
   border-radius: 10px;
 }
 
@@ -19,8 +18,9 @@
 }
 
 article {
-  background-color: rgb(204, 204, 204);
+  background-color: white;
   margin: 15px;
+  margin-top: 5px;
   border-radius: 10px;
   padding-bottom: 5px;
 }
@@ -33,4 +33,16 @@ article p {
   border-radius: 10px;
   white-space: pre-line;
   text-align: left;
+}
+
+.article-topic {
+  color: rgb(68, 59, 194);
+}
+
+.article-author {
+  margin-left: 10px;
+}
+
+.article-date {
+  margin-left: 10px;
 }

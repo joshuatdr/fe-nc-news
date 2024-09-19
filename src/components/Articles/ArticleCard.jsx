@@ -17,11 +17,15 @@ export const ArticleCard = ({
 }) => {
   return (
     <li className='article-card'>
-      <span>
-        {topic}--
-        {author}--
+      <Link to={`/topic/${topic}`} className='article-topic'>
+        {topic}
+      </Link>
+      <span className='article-author'>
+        <em>{author}</em>
       </span>
-      <ReactTimeAgo date={new Date(created_at).getTime()} locale='en-US' />
+      <span className='article-date'>
+        <ReactTimeAgo date={new Date(created_at).getTime()} locale='en-US' />
+      </span>
       <Link to={`/article/${article_id}`}>
         <h2>{title}</h2>
       </Link>

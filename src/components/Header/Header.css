@@ -1,0 +1,52 @@
+header {
+  position: sticky;
+  margin-left: 15px;
+  margin-right: 15px;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-nav {
+  display: flex;
+  height: 50px;
+  color: white;
+  justify-content: space-between;
+  background-color: rgb(150, 44, 61);
+}
+.sidebar {
+  position: absolute;
+  background-color: rgb(65, 25, 32);
+  width: 260px;
+  height: 100vh;
+}
+
+header button {
+  border: 0;
+  background-color: rgb(150, 44, 61);
+}
+
+.topics-list {
+  display: grid;
+  grid-auto-rows: min-content;
+  text-align: left;
+  margin: 10px;
+  margin-left: 0px;
+  padding: 5px;
+  background-color: white;
+  gap: 5px;
+}
+
+.topics-list a {
+  border: solid 1px grey;
+  border-radius: 5px;
+}
+
+.topics-list h3 {
+  margin: 0px;
+}
+
+h1 {
+  margin: 0px;
+  margin-top: 5px;
+  font-size: 32px;
+}

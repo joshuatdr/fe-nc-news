@@ -10,11 +10,11 @@ import './index.css';
 TimeAgo.addDefaultLocale(en);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <UserProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </UserProvider>
-  </StrictMode>
+  // <StrictMode>
+  <UserProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserProvider>
+  // </StrictMode>
 );
