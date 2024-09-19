@@ -1,7 +1,7 @@
 import ReactTimeAgo from 'react-time-ago';
 import { HashLink } from 'react-router-hash-link';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Comments } from './Comments';
 import { getArticle } from '../../apiCalls';
 import { VoteWidget } from '../VoteWidget';
@@ -19,7 +19,7 @@ export const ArticlePage = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Article is loading, please wait</p>;
+    return <p className='loading'>Article is loading, please wait</p>;
   }
 
   const formatText = article.body.replaceAll('. ', '.\n\n');
@@ -27,14 +27,18 @@ export const ArticlePage = () => {
   return (
     <>
       <article>
-        <span>
-          {article.topic}--
-          {article.author}--
+        <Link to={`/topic/${article.topic}`} className='article-topic'>
+          {article.topic}
+        </Link>
+        <span className='article-author'>
+          <em>{article.author}</em>
         </span>
-        <ReactTimeAgo
-          date={new Date(article.created_at).getTime()}
-          locale='en-US'
-        />
+        <span className='article-date'>
+          <ReactTimeAgo
+            date={new Date(article.created_at).getTime()}
+            locale='en-US'
+          />
+        </span>
         <h2>{article.title}</h2>
         <img className='article-img' src={article.article_img_url} />
         <div className='stats-bar'>

@@ -17,7 +17,7 @@ export const Comments = ({ article_id }) => {
   }, []);
 
   if (isLoading) {
-    return <p>Comments loading, please wait</p>;
+    return <p className='loading'>Comments loading, please wait</p>;
   }
 
   return (
