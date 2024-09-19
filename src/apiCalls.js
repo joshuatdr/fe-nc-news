@@ -4,11 +4,18 @@ const apiClient = axios.create({
   baseURL: 'https://nc-news-jokh.onrender.com/api',
 });
 
-export const getArticles = (topic) => {
-  let queryStr = '/articles';
+export const getArticles = (topic, sortByQuery, orderQuery) => {
+  let queryStr = '/articles?';
   if (topic) {
-    queryStr += `?topic=${topic}`;
+    queryStr += `topic=${topic}&`;
   }
+  if (sortByQuery) {
+    queryStr += `sort_by=${sortByQuery}&`;
+  }
+  if (orderQuery) {
+    queryStr += `order=${orderQuery}`;
+  }
+  console.log(queryStr);
   return apiClient
     .get(queryStr)
     .then(({ data: { articles } }) => {
