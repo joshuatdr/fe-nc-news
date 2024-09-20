@@ -10,13 +10,22 @@ export const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
-    getArticle(article_id).then((article) => {
-      setArticle(article);
-      setIsLoading(false);
-    });
+    getArticle(article_id)
+      .then((article) => {
+        setArticle(article);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setErr(true);
+      });
   }, []);
+
+  if (err) {
+    return <p className='loading'>Article {article_id} was not found!</p>;
+  }
 
   if (isLoading) {
     return <p className='loading'>Article is loading, please wait</p>;

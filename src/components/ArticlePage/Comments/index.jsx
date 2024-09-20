@@ -30,7 +30,7 @@ export const Comments = ({ article_id }) => {
         setComments={setComments}
         article_id={article_id}
       />
-      <ul>
+      <ul className='comments-list'>
         {isPostingComment ? <CommentCard isPlaceholder={true} /> : null}
         {comments.length === 0 ? (
           <span>It's quiet in here ... No comments yet!</span>

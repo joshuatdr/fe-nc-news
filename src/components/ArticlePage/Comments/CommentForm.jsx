@@ -12,13 +12,13 @@ export const CommentForm = ({
 }) => {
   const { user } = useContext(UserContext);
   const [isMsgVisible, setIsMsgVisible] = useState(false);
+  const [formInput, setFormInput] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const commentBody = e.target.form[0].value;
-    if (commentBody.length > 9) {
+    if (formInput.length > 9) {
       const filter = new Filter(); //remove bad words
-      postComment(filter.clean(commentBody), user.username, article_id).then(
+      postComment(filter.clean(formInput), user.username, article_id).then(
         (comment) => {
           setTimeout(() => {
             setComments([comment, ...comments]);
@@ -28,24 +28,26 @@ export const CommentForm = ({
       );
       setIsPostingComment(true);
       setIsMsgVisible(false);
+      setFormInput('');
     } else {
       setIsMsgVisible(true);
     }
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <span id='form-username'>
         Posting as: <em>{user.username}</em>
       </span>
       <img src={user.avatar_url} />
-      <textarea placeholder='Write a comment' />
-      <input
-        disabled={isPostingComment}
-        type='submit'
-        value='Submit'
-        onClick={handleSubmit}
+      <textarea
+        placeholder='Write a comment'
+        value={formInput}
+        onChange={(e) => {
+          setFormInput(e.target.value);
+        }}
       />
+      <input disabled={isPostingComment} type='submit' value='Submit' />
       <span id={isMsgVisible ? 'not-enough-chars' : 'hidden'}>
         Please enter at least 10 characters
       </span>

@@ -15,14 +15,9 @@ export const getArticles = (topic, sortByQuery, orderQuery) => {
   if (orderQuery) {
     queryStr += `order=${orderQuery}`;
   }
-  return apiClient
-    .get(queryStr)
-    .then(({ data: { articles } }) => {
-      return articles;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return apiClient.get(queryStr).then(({ data: { articles } }) => {
+    return articles;
+  });
 };
 
 export const getTopics = () => {
@@ -36,9 +31,6 @@ export const getArticle = (article_id) => {
     .get(`/articles/${article_id}`)
     .then(({ data: { article } }) => {
       return article;
-    })
-    .catch((err) => {
-      console.log(err);
     });
 };
 
