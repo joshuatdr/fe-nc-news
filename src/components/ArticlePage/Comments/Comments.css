@@ -73,7 +73,7 @@
   text-align: left;
 }
 
-#comments .loading {
+.loading-comment {
   background-color: #c9c9c9;
   padding-top: 21.5px;
   text-align: center;

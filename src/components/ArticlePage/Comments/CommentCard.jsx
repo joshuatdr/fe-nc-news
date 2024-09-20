@@ -25,15 +25,15 @@ export const CommentCard = ({
     }, []);
   } else {
     return (
-      <li>
+      <li className='comment-card'>
         <span className='author'>{user.username}</span>
         <span className='date'>just now</span>
         <img src={user.avatar_url} />
         <VoteWidget votes={0} isPlaceholder={true} />
-        <p className='loading'>
+        <p className='loading-comment comment-body'>
           <TailSpin stroke='#ffffff' strokeWidth='2.5' />
         </p>
-        <button className='delete-comment' disabled={true}>
+        <button className='delete-button' disabled={true}>
           Delete
         </button>
       </li>

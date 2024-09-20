@@ -28,8 +28,8 @@ export const ArticleCard = ({
       </span>
       <Link to={`/article/${article_id}`}>
         <h2>{title}</h2>
+        <img className='article-img' src={article_img_url} />
       </Link>
-      <img className='article-img' src={article_img_url} />
       <div className='stats-bar'>
         <VoteWidget votes={votes} article_id={article_id} />
         <HashLink to={`/article/${article_id}/#comments`} className='widget'>
