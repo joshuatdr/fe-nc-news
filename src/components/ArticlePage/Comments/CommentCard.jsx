@@ -54,7 +54,7 @@ export const CommentCard = ({
   };
 
   return (
-    <li>
+    <li className='comment-card'>
       <span className='author'>{comment.author}</span>
       <span className='date'>
         <ReactTimeAgo
@@ -65,15 +65,15 @@ export const CommentCard = ({
       <img src={userAvatar} />
       <VoteWidget votes={comment.votes} comment_id={comment.comment_id} />
       {isDeletingComment ? (
-        <p className='deleting'>
+        <p className='deleting-comment comment-body'>
           <TailSpin stroke='#ffffff' strokeWidth='2.5' />
         </p>
       ) : (
-        <p>{comment.body}</p>
+        <p className='comment-body'>{comment.body}</p>
       )}
       {comment.author === user.username ? (
         <button
-          className='delete-comment'
+          className='delete-button'
           disabled={isDeletingComment}
           onClick={handleClick}
         >
